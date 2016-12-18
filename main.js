@@ -17,12 +17,12 @@
 ***************************************************************************/
 
 // Cargar módulos
-var rolRecolector = require('rol.recolector'); // Obtener energía para transferir a Controller y Spawn
-var rolRecargadorBot = require('rol.recargadorBot'); // Obtener energía de la fuente inferior para transferir a estructuras
-var rolRecargadorMid = require('rol.recargadorMid'); // Obtener energía de la fuente central para transferir a estructuras
-var rolConstructorBot = require('rol.constructorBot'); // Obtener energía de la fuente inferior para construir Container inferior
-var rolConstructorMid = require('rol.constructorMid'); // Obtener energía de la fuente central para construir Container central
-var rolConstructorTop = require('rol.constructorTop'); // Obtener energía de la fuente superior para construir Road tiles
+var rolRecolector = require('rol.recolector');          // Obtener energía para transferir a Controller y Spawn
+var rolRecargadorBot = require('rol.recargadorBot');    // Obtener energía de la fuente inferior para transferir a estructuras
+var rolRecargadorMid = require('rol.recargadorMid');    // Obtener energía de la fuente central para transferir a estructuras
+var rolConstructorBot = require('rol.constructorBot');  // Obtener energía de la fuente inferior para construir Container inferior
+var rolConstructorMid = require('rol.constructorMid');  // Obtener energía de la fuente central para construir Container central
+var rolConstructorTop = require('rol.constructorTop');  // Obtener energía de la fuente superior para construir Road tiles
 
 module.exports.loop = function () {
 
@@ -33,11 +33,11 @@ module.exports.loop = function () {
         if(!Memory.datos){ // Se guarda el Epoch Time del instante en que se posiciona el primer Spawn
             Memory.datos = {
               epoch: String(Date.now()),
-              controlador: false, // Si el controlador es level 2
-              contenedorX: 34, // Coordenada x de Contenedor 1
-              contenedorY: 23, // Coordenada y de Contenedor 1
-              contenedor2X: 41, // Coordenada x de Contenedor 2 
-              contenedor2Y: 42 // Coordenada y de Contenedor 2
+              controlador: false,   // Si el controlador es level 2
+              contenedorX: 34,      // Coordenada x de Contenedor 1
+              contenedorY: 23,      // Coordenada y de Contenedor 1
+              contenedor2X: 41,     // Coordenada x de Contenedor 2 
+              contenedor2Y: 42      // Coordenada y de Contenedor 2
             };
         }
         
@@ -82,7 +82,7 @@ module.exports.loop = function () {
     // Actividad entre ticks 1 y 1999
     if(Game.time > 0 && Game.time < 2000){
     
-        // console.log(Game.time); // Contador de ticks
+        console.log(Game.time); // Contador de ticks
         
         // Filtros de Creeps por rol
         var recolectores = _.filter(Game.creeps, (creep) => creep.memory.role == 'recolector');
@@ -93,7 +93,8 @@ module.exports.loop = function () {
         var recargadoresBot = _.filter(Game.creeps, (creep) => creep.memory.role == 'recargadorBot');
         
         // Si el Controlador aún no es level 2
-        if(Game.spawns.Central.room.controller.level < 1){
+        if(Game.spawns.Central.room.controller.level < 2){
+            
             if(recolectores.length < 1) { // Crear primer recolector
                 var Recolector = Game.spawns['Central'].createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'recolector'});
             }
