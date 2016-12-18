@@ -1,4 +1,4 @@
-var rolRecargadorMid = {
+var rolRecargadorMid = { // Tarea: Extraer energía y transferirla al Container central
 
 	run: function(creep) {
 	    creep.say("R MID");
@@ -15,17 +15,14 @@ var rolRecargadorMid = {
 
             // Localizar Contenedor
             var punto = Game.rooms.sim.getPositionAt(34,23);
+            var contenido = punto.findClosestByRange(FIND_STRUCTURES, { filter: (i) => i.structureType == STRUCTURE_CONTAINER && i.store[RESOURCE_ENERGY] < i.storeCapacity });
             
-            var contenido = punto.findClosestByRange(FIND_STRUCTURES, { filter: (i) => i.structureType == STRUCTURE_CONTAINER && i.store[RESOURCE_ENERGY] == 100 });
-            if(contenido){
-                var contenedor = punto.findClosestByRange(FIND_STRUCTURES);
-                if(contenedor){
-                    if(creep.transfer(contenedor, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(contenedor);
-                    }
+            if(contenido){ // Si el primer contenedor aún tiene espacio, transferirle la energía
+                if(creep.transfer(contenido, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(contenido);
                 }
             }
-            else{
+            else{ // Si el primer contenedor está lleno, llevar energía al segundo
                 var punto = Game.rooms.sim.getPositionAt(41,42);
                 var contenedor = punto.findClosestByRange(FIND_STRUCTURES, { filter: (i) => i.structureType == STRUCTURE_CONTAINER });
                 if(contenedor){
