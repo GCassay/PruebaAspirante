@@ -1,7 +1,6 @@
 var rolConstructorBot = { // Tarea: Extraer energía y construir Container inferior
 
     run: function(creep, numConstructores) {
-	    creep.say("C BOT");
         
         var contenedor2X = parseInt(Memory.datos.contenedor2X);
         var contenedor2Y = parseInt(Memory.datos.contenedor2Y);
@@ -15,11 +14,11 @@ var rolConstructorBot = { // Tarea: Extraer energía y construir Container infer
             //creep.say('Construir');
         }
         if(creep.memory.construir) { // Creep en Modo Construcción / Con energía
-        
+            // Transferir energía al Container inferior       
             var punto = Game.rooms.sim.getPositionAt(contenedor2X,contenedor2Y);
             var contenedor = punto.findClosestByRange(FIND_CONSTRUCTION_SITES);
             if(contenedor) {
-                if(creep.build(contenedor) == ERR_NOT_IN_RANGE){ // Desplazarse hasta el punto si no está en el rango
+                if(creep.build(contenedor) == ERR_NOT_IN_RANGE){
                     creep.moveTo(contenedor);
                 }
             }
