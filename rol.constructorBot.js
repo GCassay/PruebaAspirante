@@ -1,4 +1,4 @@
-var rolConstructorBot = {
+var rolConstructorBot = { // Tarea: Extraer energía y construir Container inferior
 
     run: function(creep, numConstructores) {
 	    creep.say("C BOT");
