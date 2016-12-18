@@ -1,10 +1,10 @@
-var rolConstructorMid = {
+var rolConstructorBot = { // Tarea: Extraer energía y construir Container inferior
 
     run: function(creep, numConstructores) {
-	    creep.say("C MID");
+	    creep.say("C BOT");
         
-        var contenedorX = parseInt(Memory.datos.contenedorX);
-        var contenedorY = parseInt(Memory.datos.contenedorY);
+        var contenedor2X = parseInt(Memory.datos.contenedor2X);
+        var contenedor2Y = parseInt(Memory.datos.contenedor2Y);
 
         if(creep.memory.construir && creep.carry.energy == 0) { // Creep en Modo Construcción / Sin energía
             creep.memory.construir = false; // Pasar a Modo Recolección para obtener más energía
@@ -16,8 +16,8 @@ var rolConstructorMid = {
         }
         if(creep.memory.construir) { // Creep en Modo Construcción / Con energía
         
-            var punto = Game.rooms.sim.getPositionAt(contenedorX,contenedorY);
-            var contenedor = punto.findClosestByPath(FIND_CONSTRUCTION_SITES);
+            var punto = Game.rooms.sim.getPositionAt(contenedor2X,contenedor2Y);
+            var contenedor = punto.findClosestByRange(FIND_CONSTRUCTION_SITES);
             if(contenedor) {
                 if(creep.build(contenedor) == ERR_NOT_IN_RANGE){ // Desplazarse hasta el punto si no está en el rango
                     creep.moveTo(contenedor);
@@ -25,7 +25,7 @@ var rolConstructorMid = {
             }
         }
         else { // Modo Recolección 
-            var punto = Game.rooms.sim.getPositionAt(35,20);
+            var punto = Game.rooms.sim.getPositionAt(43,44);
             var fuente = punto.findClosestByRange(FIND_SOURCES_ACTIVE);
             // Si no está en el rango de la fuente, desplazarse hasta ella
             if(creep.harvest(fuente) == ERR_NOT_IN_RANGE) {
@@ -35,4 +35,4 @@ var rolConstructorMid = {
     }
 };
 
-module.exports = rolConstructorMid;
+module.exports = rolConstructorBot;
