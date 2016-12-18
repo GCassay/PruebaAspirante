@@ -1,7 +1,6 @@
 var rolConstructorMid = { // Tarea: Extraer energía y construir Container Central
 
     run: function(creep, numConstructores) {
-	    creep.say("C MID");
         
         var contenedorX = parseInt(Memory.datos.contenedorX);
         var contenedorY = parseInt(Memory.datos.contenedorY);
@@ -15,7 +14,7 @@ var rolConstructorMid = { // Tarea: Extraer energía y construir Container Centr
             //creep.say('Construir');
         }
         if(creep.memory.construir) { // Creep en Modo Construcción / Con energía
-        
+            // Construir Container central
             var punto = Game.rooms.sim.getPositionAt(contenedorX,contenedorY);
             var contenedor = punto.findClosestByPath(FIND_CONSTRUCTION_SITES);
             if(contenedor) {
