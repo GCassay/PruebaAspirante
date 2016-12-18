@@ -1,4 +1,4 @@
-var rolRecargadorBot = {
+var rolRecargadorBot = { // Tarea: Extraer energía y transferirla al Container inferior
 
 	run: function(creep) {
 	    creep.say("R BOT");
