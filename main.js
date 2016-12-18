@@ -5,11 +5,11 @@
 * 2. Nombre asignado al Spawn -> Central
 * 3. Activar 'Show flags' en DISPLAY OPTIONS
 * 4. Los minutos totales de ejecución se muestran por consola al finalizar
-* 5. Descomentar línea 85 para visualizar contador de ticks en consola
+* 5. Descomentar línea 86 para visualizar contador de ticks en consola
 ***************************************************************************
-* El código genera:
+* El código genera en el juego:
 * Construcción de 2 Structures Container
-* Construcción de 1 Structures Road
+* Construcción de 1 Structure Road
 * Transferencia de energía a Containers y Spawn
 * Upgrade del Controller
 ***************************************************************************
@@ -34,10 +34,10 @@ module.exports.loop = function () {
             Memory.datos = {
               epoch: String(Date.now()),
               controlador: false,   // Si el controlador es level 2
-              contenedorX: 34,      // Coordenada x de Contenedor 1
-              contenedorY: 23,      // Coordenada y de Contenedor 1
-              contenedor2X: 41,     // Coordenada x de Contenedor 2 
-              contenedor2Y: 42      // Coordenada y de Contenedor 2
+              contenedorX: 34,      // Coordenada x de Container 1
+              contenedorY: 23,      // Coordenada y de Container 1
+              contenedor2X: 41,     // Coordenada x de Container 2 
+              contenedor2Y: 42      // Coordenada y de Container 2
             };
         }
         
@@ -56,9 +56,10 @@ module.exports.loop = function () {
     // Fin de la prueba (tick 2000)
     if(Game.time == 2000){
         
-        var final = parseInt(Date.now()); // Se obtiene el Epoch Time del instante en que se alcanzan los 2000 ticks
-        var inicio = parseInt(Memory.datos.epoch); // Se recoge el Epoch Time de inicio
-        var tiempo = final - inicio; // Se calculan los milisegundos transcurridos
+        var final = parseInt(Date.now());           // Se obtiene el Epoch Time del instante en que se alcanzan los 2000 ticks
+        var inicio = parseInt(Memory.datos.epoch);  // Se recoge el Epoch Time de inicio
+        var tiempo = final - inicio;                // Se calculan los milisegundos transcurridos
+        var tiempo = Math.floor(tiempo / 60000);    // Convertir milisegundos a minutos
         
         console.log('TIEMPO TRANSCURRIDO: '+ tiempo +' minutos');// Se usa como medida de tiempo el minuto
         
