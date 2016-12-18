@@ -7,13 +7,13 @@
 * 4. Los minutos totales de ejecución se muestran por consola al finalizar
 * 5. Descomentar línea 84 para visualizar contador de ticks en consola
 ***************************************************************************
-* Autor: G. Cassinello
-***************************************************************************
 * El código genera:
 * Construcción de 2 Containers y carga de energía
 * Construcción de 1 Road path
 * Carga de contenedores
 * Upgrade del Controller
+***************************************************************************
+* Autor: G. Cassinello
 ***************************************************************************/
 
 // Cargar módulos
