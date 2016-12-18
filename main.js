@@ -1,10 +1,19 @@
 /**************************************************************************
- README
+* README
 ***************************************************************************
- 1. Coordenadas para el primer Spawn -> X:25 Y:25
- 2. Nombre asignado al primer Spawn -> Central
- 3. Activar 'Show flags' en DISPLAY OPTIONS
- 4. Contador de ticks y total de minutos en Consola
+* 1. Coordenadas a asignar al Spawn inicial -> X:25 Y:25
+* 2. Nombre asignado al Spawn -> Central
+* 3. Activar 'Show flags' en DISPLAY OPTIONS
+* 4. Los minutos totales de ejecución se muestran por consola al finalizar
+* 5. Descomentar línea 84 para visualizar contador de ticks en consola
+***************************************************************************
+* Autor: G. Cassinello
+***************************************************************************
+* El código genera:
+* Construcción de 2 Containers y carga de energía
+* Construcción de 1 Road path
+* Carga de contenedores
+* Upgrade del Controller
 ***************************************************************************/
 
 // Cargar módulos
@@ -72,7 +81,7 @@ module.exports.loop = function () {
     // Actividad entre ticks 1 y 1999
     if(Game.time > 0 && Game.time < 2000){
     
-        console.log(Game.time); // Contador
+        // console.log(Game.time); // Contador
         
         // Filtros de Creeps por rol
         var recolectores = _.filter(Game.creeps, (creep) => creep.memory.role == 'recolector');
