@@ -1,7 +1,6 @@
 var rolRecargadorMid = { // Tarea: Extraer energía y transferirla al Container central
 
 	run: function(creep) {
-	    creep.say("R MID");
 
         if(creep.memory.transferir && creep.carry.energy == 0) { // Creep en Modo Transferir / Sin energía
             creep.memory.transferir = false; // Pasar a Modo Recolección para obtener más energía
@@ -13,7 +12,7 @@ var rolRecargadorMid = { // Tarea: Extraer energía y transferirla al Container 
         }
         if(creep.memory.transferir) { // Creep en Modo Transferir / Con energía
 
-            // Localizar Contenedor
+            // Transferir energía al Container central
             var punto = Game.rooms.sim.getPositionAt(34,23);
             var contenido = punto.findClosestByRange(FIND_STRUCTURES, { filter: (i) => i.structureType == STRUCTURE_CONTAINER && i.store[RESOURCE_ENERGY] < i.storeCapacity });
             
@@ -22,7 +21,7 @@ var rolRecargadorMid = { // Tarea: Extraer energía y transferirla al Container 
                     creep.moveTo(contenido);
                 }
             }
-            else{ // Si el primer contenedor está lleno, llevar energía al segundo
+            else{ // Si el Container central está lleno, llevar energía al inferior
                 var punto = Game.rooms.sim.getPositionAt(41,42);
                 var contenedor = punto.findClosestByRange(FIND_STRUCTURES, { filter: (i) => i.structureType == STRUCTURE_CONTAINER });
                 if(contenedor){
