@@ -83,7 +83,7 @@ module.exports.loop = function () {
     // Actividad entre ticks 1 y 1999
     if(Game.time > 0 && Game.time < 2000){
     
-        console.log(Game.time); // Contador de ticks
+        //console.log(Game.time); // Contador de ticks
         
         // Filtros de Creeps por rol
         var recolectores = _.filter(Game.creeps, (creep) => creep.memory.role == 'recolector');
