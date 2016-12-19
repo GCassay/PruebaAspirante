@@ -1,5 +1,5 @@
-var rolRecolector = {
-    // Recoger energía para el Spawn (si tiene capacidad)
+var rolRecolector = { // Tarea: Recoger energía para subir de nivel al Controlador
+    
     run: function(creep) {
             
             if(creep.memory.transferir && creep.carry.energy == 0) { // Creep en Modo Transferir / Sin energía
@@ -12,9 +12,8 @@ var rolRecolector = {
             }
             if(creep.memory.transferir) { // Creep en Modo Transferir / Con energía
 
-    			// Entregará la energía al Controlador si está en el rango
+    			// Entregará la energía al Controlador
     			if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-    				// Si no es así, se desplazará primero hasta él
     				creep.moveTo(creep.room.controller);
     			}
             }
