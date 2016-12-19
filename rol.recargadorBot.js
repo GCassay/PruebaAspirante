@@ -1,7 +1,6 @@
 var rolRecargadorBot = { // Tarea: Extraer energía y transferirla al Container inferior
 
 	run: function(creep) {
-	    creep.say("R BOT");
 
         if(creep.memory.transferir && creep.carry.energy == 0) { // Creep en Modo Transferir / Sin energía
             creep.memory.transferir = false; // Pasar a Modo Recolección para obtener más energía
@@ -14,7 +13,7 @@ var rolRecargadorBot = { // Tarea: Extraer energía y transferirla al Container 
         
        if(creep.memory.transferir) { // Creep en Modo Transferir / Con energía
 
-            // Localizar Contenedor
+            // Transferir energía al Container inferior
             var punto = Game.rooms.sim.getPositionAt(41,42);
             var contenedor = punto.findClosestByRange(FIND_STRUCTURES);
             if(contenedor){
@@ -23,7 +22,7 @@ var rolRecargadorBot = { // Tarea: Extraer energía y transferirla al Container 
                 }
             }
         }
-        else { // Modo Recolección 
+        else { // Modo Recolección
             var punto = Game.rooms.sim.getPositionAt(43,44);
             var fuente = punto.findClosestByRange(FIND_SOURCES_ACTIVE);
             // Si no está en el rango de la fuente, desplazarse hasta ella
