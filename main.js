@@ -9,7 +9,7 @@
 ***************************************************************************
 * El código genera en el juego:
 * Construcción de 2 Structures Container
-* Construcción de 1 Structure Road
+* Construcción de 7 Structures Road
 * Transferencia de energía a Containers y Spawn
 * Upgrade del Controller
 ***************************************************************************
